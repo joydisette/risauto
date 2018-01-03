@@ -53,7 +53,7 @@ data = data.astype("float") / 255.0
 # partition the data into training and testing splits using 75% of
 # the data for training and the remaining 25% for testing
 (trainX, testX, trainY, testY) = train_test_split(data, labels,
-	test_size=0.40, random_state=42)
+	test_size=0.30, random_state=42)
 
 # convert the labels from integers to vectors
 trainY = LabelBinarizer().fit_transform(trainY)
@@ -81,7 +81,7 @@ for layer in baseModel.layers:
 # compile our model (this needs to be done after our setting our
 # layers to being non-trainable
 print("[INFO] compiling model...")
-opt = RMSprop(lr=0.0001)
+opt = SGD(lr=0.0005)
 model.compile(loss="categorical_crossentropy", optimizer=opt,
 	metrics=["accuracy"])
 
@@ -90,13 +90,13 @@ model.compile(loss="categorical_crossentropy", optimizer=opt,
 # start to become initialized with actual "learned" values
 # versus pure random
 print("[INFO] training head...")
-model.fit_generator(aug.flow(trainX, trainY, batch_size=80),
+model.fit_generator(aug.flow(trainX, trainY, batch_size=32),
 	validation_data=(testX, testY), epochs=20,
 	steps_per_epoch=len(trainX) // 32, verbose=1)
 
 # evaluate the network after initialization
 print("[INFO] evaluating after initialization...")
-predictions = model.predict(testX, batch_size=80)
+predictions = model.predict(testX, batch_size=32)
 print(classification_report(testY.argmax(axis=1),
 	predictions.argmax(axis=1), target_names=classNames))
 
@@ -108,16 +108,16 @@ for layer in baseModel.layers:
 # for the changes to the model to take affect we need to recompile
 # the model, this time using SGD with a *very* small learning rate
 print("[INFO] re-compiling model...")
-opt = Adam(lr=0.00001)
+opt = RMSprop(lr=0.0005,decay=0.8)
 model.compile(loss="categorical_crossentropy", optimizer=opt,
 	metrics=["accuracy"])
 
 # train the model again, this time fine-tuning *both* the final set
 # of CONV layers along with our set of FC layers
 print("[INFO] fine-tuning model...")
-model.fit_generator(aug.flow(trainX, trainY, batch_size=80),
-	validation_data=(testX, testY), epochs=60,
-	steps_per_epoch=len(trainX) // 32, verbose=1)
+model.fit_generator(aug.flow(trainX, trainY, batch_size=64),
+	validation_data=(testX, testY), epochs=100,
+	steps_per_epoch=len(trainX) // 64, verbose=1)
 
 # evaluate the network on the fine-tuned model
 print("[INFO] evaluating after fine-tuning...")
