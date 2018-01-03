@@ -1,21 +1,19 @@
 # USAGE
-# python finetune_flowers17.py --dataset ../datasets/flowers17/images \
-# 	--model flowers17.model
-
+# python finetune_risauto.py --dataset /home/houda/maitrise/Data/edgar_dataset/images  --model risser.model
 # import the necessary packages
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-from pyimagesearch.preprocessing import ImageToArrayPreprocessor
-from pyimagesearch.preprocessing import SimplePreprocessor
-from pyimagesearch.datasets import SimpleDatasetLoader
-from pyimagesearch.nn.conv import FCHeadNet
+from risauto.preprocessing import ImageToArrayPreprocessor
+from risauto.preprocessing import SimplePreprocessor
+from risauto.datasets import SimpleDatasetLoader
+from risauto.nn.conv import FCHeadNet
 from keras import regularizers
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import RMSprop
 from keras.optimizers import SGD
 from keras.optimizers import Adam
-from keras.applications import VGG16
+from keras.applications import InceptionV3
 from keras.layers import Input
 from keras.models import Model
 from imutils import paths
@@ -61,9 +59,9 @@ data = data.astype("float") / 255.0
 trainY = LabelBinarizer().fit_transform(trainY)
 testY = LabelBinarizer().fit_transform(testY)
 
-# load the VGG16 network, ensuring the head FC layer sets are left
+# load the InceptionV3 network, ensuring the head FC layer sets are left
 # off
-baseModel = VGG16(weights="imagenet", include_top=False,
+baseModel = InceptionV3(weights="imagenet", include_top=False,
 	input_tensor=Input(shape=(224, 224, 3)))
 
 # initialize the new head of the network, a set of FC layers

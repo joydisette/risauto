@@ -2,7 +2,7 @@
 # python inspect_model.py --include-top -1
 
 # import the necessary packages
-from keras.applications import VGG16
+from keras.applications import InceptionV3
 import argparse
 
 # construct the argument parse and parse the arguments
@@ -13,7 +13,7 @@ args = vars(ap.parse_args())
 
 # load the VGG16 network
 print("[INFO] loading network...")
-model = VGG16(weights="imagenet",
+model = InceptionV3(weights="imagenet",
 	include_top=args["include_top"] > 0)
 print("[INFO] showing layers...")
 
