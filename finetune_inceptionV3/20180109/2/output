@@ -1,3 +1,4 @@
+
 bazel-bin/tensorflow/examples/image_retraining/retrain --image_dir /home/houda/maitrise/Data/edgar_dataset/images --random_brightness 3 --flip_left_right  --print_misclassified_test_images --how_many_training_steps 1000
 
 
