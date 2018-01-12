@@ -1,0 +1,43 @@
+bazel-bin/tensorflow/examples/image_retraining/retrain --image_dir /home/houda/maitrise/Data/edgar_dataset/images --random_brightness 2 --flip_left_right  --print_misclassified_test_images
+
+tensorflow:Final test accuracy = 32.7% (N=52)
+
+
+
+INFO:tensorflow:=== MISCLASSIFIED TEST IMAGES ===
+
+/images/stage_5/5_05-02-08-SJ0000650_pa_0.jpg  stage 4
+/images/stage_5/5_09-04-08-SJ0000337_pa.jpg  stage 2
+/images/stage_5/5_09-08-19-SJ0000679_pa_0.jpg  stage 1
+/images/stage_5/5_08-08-05-SJ0000828_pa_0.jpg  stage 4
+/images/stage_5/5_11-08-17-SJ0000320_pa_0.jpg  stage 1
+/images/stage_4/4_07-06-18-SJ0000078_pa_0.jpg  stage 5
+/images/stage_4/4_08-06-16-SJ0000361_pa_0.jpg  stage 2
+/images/stage_4/4_05-10-31-SJ0000695_pa_0.jpg  stage 5
+/images/stage_4/4_07-09-10-SJ0000695_pa_0.jpg  stage 5
+/images/stage_4/4_08-02-06-SJ0000358_pa_0.jpg  stage 3
+/images/stage_1/1_07-01-22-SJ0000607_pa_0.jpg  stage 4
+/images/stage_1/1_08-04-15-SJ0001192_pa_0.jpg  stage 5
+/images/stage_1/1_09-05-04-SJ0000676_pa_0.jpg  stage 3
+/images/stage_1/1_08-06-06-SJ0001203_pa_0.jpg  stage 4
+/images/stage_1/1_15-04-08-SJ0001401_pa_0.jpg  stage 3
+/images/stage_1/1_06-01-06-SJ0000226_pa_0.jpg  stage 3
+/images/stage_1/1_07-08-30-SJ0000318_pa_0.jpg  stage 0
+/images/stage_1/1_06-05-15-SJ0001022_pa_0.jpg  stage 4
+/images/stage_1/1_04-11-01-SJ0000204_pa_0.jpg  stage 4
+/images/stage_1/1_10-02-23-SJ0000765_pa_0.jpg  stage 2
+/images/stage_0/0_07-02-27-SJ0000222_pa_0.jpg  stage 3
+/images/stage_0/0_07-01-15-SJ0001030_pa_0.jpg  stage 1
+/images/stage_0/0_07-03-12-SJ0001107_pa_0.jpg  stage 1
+/images/stage_0/0_07-05-18-SJ0001073_pa_0.jpg  stage 2
+/images/stage_0/0_06-12-06-SJ0000509_pa_0.jpg  stage 1
+/images/stage_3/3_08-11-17-SJ0001207_pa_0.jpg  stage 2
+/images/stage_3/3_09-05-04-SJ0001149_pa_0.jpg  stage 4
+/images/stage_3/3_05-07-12-SJ0000594_pa_0.jpg  stage 2
+/images/stage_3/3_08-04-14-SJ0000289_pa_0.jpg  stage 1
+/images/stage_3/3_07-08-15-SJ0001111_pa_0.jpg  stage 5
+/images/stage_3/3_06-01-06-SJ0000194_pa_0.jpg  stage 4
+/images/stage_2/2_15-02-17-SJ0001414_pa_0.jpg  stage 3
+/images/stage_2/2_15-03-04-SJ0001404_pa_0.jpg  stage 1
+/images/stage_2/2_06-05-05-SJ0001021_pa_0.jpg  stage 4
+/images/stage_2/2_04-11-12-SJ0000585_pa_0.jpg  stage 4
