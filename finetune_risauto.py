@@ -1,6 +1,5 @@
 # USAGE
-# python finetune_flowers17.py --dataset ../datasets/flowers17/images \
-# 	--model flowers17.model
+
 
 # import the necessary packages
 from sklearn.preprocessing import LabelBinarizer
